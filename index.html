@@ -12,7 +12,7 @@
         }
         .section-title {
             /* 直接用原生CSS，强制设置2倍字号+加粗，优先级高于@apply */
-            font-size: 3rem !important; /* 原text-3xl约1.875rem，4rem≈2倍；若觉得大，可改3.75rem */
+            font-size: 2.5rem !important; /* 原text-3xl约1.875rem，4rem≈2倍；若觉得大，可改3.75rem */
             font-weight: bold !important; /* 强制加粗 */
             color: #1f2937 !important; /* 对应原text-gray-800 */
             margin-bottom: 0.5rem !important; /* 对应原mb-2 */
@@ -452,9 +452,52 @@ in facial videos</p>
                 mobileMenu.classList.add('hidden');
             });
         });
+
+        // ==========================================================================
+        // 补充：图片滑动切换逻辑（新增代码，复制粘贴到这里）
+        // ==========================================================================
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. 获取图片滑动相关元素
+            const sliderItems = document.querySelectorAll('.slider-item'); // 所有图片容器
+            const prevButton = document.getElementById('prev-button');   // 左箭头按钮
+            const nextButton = document.getElementById('next-button');   // 右箭头按钮
+            let currentIndex = 0; // 当前显示的图片索引（初始为第1张，索引0）
+        
+            // 2. 定义“显示指定索引图片”的函数
+            function showSlide(index) {
+                // 隐藏所有图片
+                sliderItems.forEach(item => {
+                    item.classList.add('hidden');
+                });
+                // 显示当前索引的图片（移除hidden类）
+                sliderItems[index].classList.remove('hidden');
+            }
+        
+            // 3. 左箭头点击事件：切换到上一张（边界处理：第1张点击后跳到最后1张）
+            prevButton.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + sliderItems.length) % sliderItems.length;
+                showSlide(currentIndex);
+            });
+        
+            // 4. 右箭头点击事件：切换到下一张（边界处理：最后1张点击后跳到第1张）
+            nextButton.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % sliderItems.length;
+                showSlide(currentIndex);
+            });
+        
+            // 5. 初始化：默认显示第1张图片（可选，确保页面加载时正确显示）
+            showSlide(currentIndex);
+        
+            // （可选）添加按钮样式：鼠标悬浮时显示白色背景，提升交互感
+            const sliderButtons = document.querySelectorAll('.slider-button');
+            sliderButtons.forEach(btn => {
+                btn.classList.add('absolute', 'top-1/2', '-translate-y-1/2', 'bg-white/80', 'text-gray-800', 'p-2', 'rounded-full', 'shadow-md', 'hover:bg-white', 'cursor-pointer', 'z-10');
+            });
+            });
     </script>
 </body>
 </html>
+
 
 
 
