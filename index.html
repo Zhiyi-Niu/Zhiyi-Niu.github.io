@@ -11,7 +11,14 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
         }
         .section-title {
-            @apply text-5xl font-bold text-gray-800 mb-2 pb-2 border-b-2 border-blue-500 inline-block;
+            /* 直接用原生CSS，强制设置2倍字号+加粗，优先级高于@apply */
+            font-size: 4rem !important; /* 原text-3xl约1.875rem，4rem≈2倍；若觉得大，可改3.75rem */
+            font-weight: bold !important; /* 强制加粗 */
+            color: #1f2937 !important; /* 对应原text-gray-800 */
+            margin-bottom: 0.5rem !important; /* 对应原mb-2 */
+            padding-bottom: 0.5rem !important; /* 对应原pb-2 */
+            border-bottom: 2px solid #3b82f6 !important; /* 对应原border-b-2 border-blue-500 */
+            display: inline-block !important;
         }
         .nav-link {
             @apply text-gray-800 hover:text-blue-600 transition duration-300;
@@ -448,6 +455,7 @@ in facial videos</p>
     </script>
 </body>
 </html>
+
 
 
 
