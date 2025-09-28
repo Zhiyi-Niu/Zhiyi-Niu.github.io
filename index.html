@@ -14,7 +14,7 @@
             @apply text-3xl font-bold text-gray-800 mb-2 pb-2 border-b-2 border-blue-500 inline-block;
         }
         .nav-link {
-            @apply text-gray-600 hover:text-blue-600 transition duration-300;
+            @apply text-gray-1000 hover:text-blue-600 transition duration-300;
         }
         .publication-item {
             @apply mb-6 pl-4 border-l-4 border-gray-200;
@@ -24,7 +24,7 @@
 <body class="bg-gray-50 text-gray-700">
 
     <!-- 导航栏 -->
-    <header class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
+    <header class="bg-sky-50/90 backdrop-blur-md shadow-sm sticky top-0 z-50">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#home" class="text-2xl font-bold text-gray-900">Tu Vision Group</a>
             <div class="hidden md:flex items-center space-x-8">
@@ -41,7 +41,7 @@
             </button>
         </nav>
         <!-- 移动端菜单 -->
-        <div id="mobile-menu" class="md:hidden hidden px-6 pb-4 space-y-2">
+        <div id="mobile-menu" class="md:hidden hidden px-6 pb-4 space-y-2 bg-sky-50/90">
             <a href="#home" class="block nav-link">首页</a>
             <a href="#research" class="block nav-link">科研方向</a>
             <a href="#publications" class="block nav-link">发表论文</a>
@@ -61,6 +61,33 @@
                 </p>
             </div>
         </section>
+
+        <!-- 图片滑动展示区域 -->
+        <section id="slider" class="py-10">
+            <div class="container mx-auto px-6">
+                <div id="image-slider" class="relative group w-full max-w-4xl mx-auto rounded-lg overflow-hidden shadow-2xl">
+                    <!-- 图片 -->
+                    <div class="slider-item duration-700 ease-in-out">
+                        <img src="images/group_photo_1.jpg" class="w-full object-cover" alt="Slider Image 1">
+                    </div>
+                    <div class="slider-item duration-700 ease-in-out hidden">
+                        <img src="images/group_photo_2.jpg" class="w-full object-cover" alt="Slider Image 2">
+                    </div>
+                    <div class="slider-item duration-700 ease-in-out hidden">
+                        <img src="images/group_photo_3.jpg" class="w-full object-cover" alt="Slider Image 3">
+                    </div>
+                    
+                    <!-- 切换按钮 -->
+                    <button id="prev-button" class="slider-button left-4">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    </button>
+                    <button id="next-button" class="slider-button right-4">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
         
         <!-- 科研方向 -->
         <section id="research" class="py-20">
@@ -131,7 +158,7 @@ in facial videos</p>
                     </li>
                 </ul>
                 <!-- 2024年 -->
-                <h3 class="text-2xl font-semibold mb-6 text-gray-800">2024</h3>
+                <h3 class="text-2xl font-semibold mt-16 mb-6 text-gray-800">2024</h3>
                 <ul>
                     <li class="publication-item">
                         <p class="font-bold text-lg">Low-light images enhancement via a dense transformer network</p>
@@ -162,7 +189,7 @@ in facial videos</p>
                     </li>
                 </ul>
                 <!-- 2023年 -->
-                <h3 class="text-2xl font-semibold mt-12 mb-6 text-gray-800">2023</h3>
+                <h3 class="text-2xl font-semibold mt-16 mb-6 text-gray-800">2023</h3>
                 <ul>
                     <li class="publication-item">
                         <p class="font-bold text-lg">An improved YOLOv5 for object detection in visible and thermal infrared images based on contrastive learning</p>
@@ -424,6 +451,7 @@ in facial videos</p>
     </script>
 </body>
 </html>
+
 
 
 
