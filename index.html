@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu课题组</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* 自定义一些基础样式 */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        .section-title {
+            @apply text-3xl font-bold text-gray-800 mb-2 pb-2 border-b-2 border-blue-500 inline-block;
+        }
+        .nav-link {
+            @apply text-gray-600 hover:text-blue-600 transition duration-300;
+        }
+        .publication-item {
+            @apply mb-6 pl-4 border-l-4 border-gray-200;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-700">
+
+    <!-- 导航栏 -->
+    <header class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#home" class="text-2xl font-bold text-gray-900">Tu 课题组</a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#home" class="nav-link font-semibold">首页</a>
+                <a href="#research" class="nav-link font-semibold">科研方向</a>
+                <a href="#publications" class="nav-link font-semibold">发表论文</a>
+                <a href="#members" class="nav-link font-semibold">课题组成员</a>
+                <a href="#news" class="nav-link font-semibold">新闻动态</a>
+                <a href="#contact" class="nav-link font-semibold">联系我们</a>
+            </div>
+            <!-- 移动端菜单按钮 -->
+            <button id="mobile-menu-button" class="md:hidden text-gray-700 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+        <!-- 移动端菜单 -->
+        <div id="mobile-menu" class="md:hidden hidden px-6 pb-4 space-y-2">
+            <a href="#home" class="block nav-link">首页</a>
+            <a href="#research" class="block nav-link">科研方向</a>
+            <a href="#publications" class="block nav-link">发表论文</a>
+            <a href="#members" class="block nav-link">课题组成员</a>
+            <a href="#news" class="block nav-link">新闻动态</a>
+            <a href="#contact" class="block nav-link">联系我们</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- 首页介绍 -->
+        <section id="home" class="py-20 bg-white">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-5xl font-extrabold text-gray-900 mb-4">欢迎来到 Tu 课题组</h1>
+                <p class="text-lg max-w-3xl mx-auto leading-relaxed">
+                    这里是关于我们课题组的简短介绍。我们致力于前沿科学研究，专注于 [领域一], [领域二] 和 [领域三]。我们的目标是推动科学边界，培养下一代科研人才。请在此处替换为您的课题组介绍。
+                </p>
+            </div>
+        </section>
+        
+        <!-- 科研方向 -->
+        <section id="research" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="section-title">科研方向</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <!-- 科研方向1 -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                        <img src="images/research1.jpg" alt="科研方向一的图片" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">方向一：计算机视觉</h3>
+                            <p class="text-base">这里是对科研方向一的详细描述。您可以介绍该方向的研究背景、主要挑战和我们的研究方法与成果。</p>
+                        </div>
+                    </div>
+                    <!-- 科研方向2 -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                        <img src="images/research2.jpg" alt="科研方向二的图片" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">方向二：机器学习理论</h3>
+                            <p class="text-base">这里是对科研方向二的详细描述。您可以介绍该方向的研究背景、主要挑战和我们的研究方法与成果。</p>
+                        </div>
+                    </div>
+                    <!-- 科研方向3 -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                        <img src="images/research3.jpg" alt="科研方向三的图片" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">方向三：自然语言处理</h3>
+                            <p class="text-base">这里是对科研方向三的详细描述。您可以介绍该方向的研究背景、主要挑战和我们的研究方法与成果。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 发表论文 -->
+        <section id="publications" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="section-title">发表论文</h2>
+                </div>
+                <!-- 2024年 -->
+                <h3 class="text-2xl font-semibold mb-6 text-gray-800">2024</h3>
+                <ul>
+                    <li class="publication-item">
+                        <p class="font-bold text-lg">论文标题一 (Placeholder Title 1)</p>
+                        <p class="text-sm text-gray-600">作者 A, 作者 B, <strong>Tu 教授</strong></p>
+                        <p class="italic">期刊或会议名称 (Journal or Conference Name), 2024</p>
+                        <div class="mt-2 space-x-4">
+                            <a href="papers/paper1.pdf" class="text-blue-600 hover:underline">[论文]</a>
+                            <a href="#" class="text-blue-600 hover:underline">[代码]</a>
+                            <a href="#" class="text-blue-600 hover:underline">[项目主页]</a>
+                        </div>
+                    </li>
+                    <li class="publication-item">
+                        <p class="font-bold text-lg">论文标题二 (Placeholder Title 2)</p>
+                        <p class="text-sm text-gray-600">作者 C, 作者 D, <strong>Tu 教授</strong></p>
+                        <p class="italic">期刊或会议名称 (Journal or Conference Name), 2024</p>
+                        <div class="mt-2 space-x-4">
+                            <a href="papers/paper2.pdf" class="text-blue-600 hover:underline">[论文]</a>
+                            <a href="#" class="text-blue-600 hover:underline">[代码]</a>
+                        </div>
+                    </li>
+                </ul>
+                <!-- 2023年 -->
+                <h3 class="text-2xl font-semibold mt-12 mb-6 text-gray-800">2023</h3>
+                <ul>
+                    <li class="publication-item">
+                        <p class="font-bold text-lg">论文标题三 (Placeholder Title 3)</p>
+                        <p class="text-sm text-gray-600">作者 E, 作者 F, <strong>Tu 教授</strong></p>
+                        <p class="italic">期刊或会议名称 (Journal or Conference Name), 2023</p>
+                        <div class="mt-2 space-x-4">
+                            <a href="papers/paper3.pdf" class="text-blue-600 hover:underline">[论文]</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 课题组成员 -->
+        <section id="members" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="section-title">课题组成员</h2>
+                </div>
+                <!-- 导师 -->
+                <h3 class="text-2xl font-semibold mb-8 text-gray-800">导师</h3>
+                <div class="flex flex-col md:flex-row items-center bg-white p-6 rounded-lg shadow-md mb-12">
+                    <img src="members/prof_tu.jpg" alt="Tu教授的照片" class="w-40 h-40 rounded-full object-cover mr-0 md:mr-8 mb-4 md:mb-0">
+                    <div>
+                        <h4 class="text-xl font-bold">Tu 教授</h4>
+                        <p class="text-blue-600">博士生导师</p>
+                        <p class="mt-2">这里是Tu教授的简介，包括研究方向、教育背景、荣誉奖项等。可以链接到他的个人主页。</p>
+                    </div>
+                </div>
+                <!-- 在读学生 -->
+                <h3 class="text-2xl font-semibold mb-8 text-gray-800">在读学生</h3>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+                    <!-- 学生1 -->
+                    <div class="text-center">
+                        <img src="members/student1.jpg" alt="学生一的照片" class="w-32 h-32 rounded-full object-cover mx-auto shadow-lg mb-2">
+                        <h5 class="font-bold">学生姓名</h5>
+                        <p class="text-sm text-gray-500">2022级博士生</p>
+                    </div>
+                    <!-- 学生2 -->
+                    <div class="text-center">
+                        <img src="members/student2.jpg" alt="学生二的照片" class="w-32 h-32 rounded-full object-cover mx-auto shadow-lg mb-2">
+                        <h5 class="font-bold">学生姓名</h5>
+                        <p class="text-sm text-gray-500">2023级硕士生</p>
+                    </div>
+                    <!-- 更多学生... -->
+                </div>
+                <!-- 已毕业成员 -->
+                <h3 class="text-2xl font-semibold mt-12 mb-8 text-gray-800">已毕业成员</h3>
+                <div class="space-y-2">
+                    <p><strong>张三 (2022届博士)</strong>, 现就职于 [公司/单位名称]</p>
+                    <p><strong>李四 (2021届硕士)</strong>, 现就职于 [公司/单位名称]</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 新闻动态 -->
+        <section id="news" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="section-title">新闻动态</h2>
+                </div>
+                <div class="max-w-3xl mx-auto">
+                    <ul class="space-y-6">
+                        <li class="flex items-start">
+                            <span class="text-blue-600 font-semibold w-28 flex-shrink-0">[YYYY-MM-DD]</span>
+                            <p>一条新闻动态。例如：祝贺某某同学的论文被顶级会议 [会议名称] 接收！</p>
+                        </li>
+                        <li class="flex items-start">
+                             <span class="text-blue-600 font-semibold w-28 flex-shrink-0">[YYYY-MM-DD]</span>
+                            <p>另一条新闻动态。例如：课题组迎来新成员！欢迎某某同学加入我们！</p>
+                        </li>
+                        <li class="flex items-start">
+                             <span class="text-blue-600 font-semibold w-28 flex-shrink-0">[YYYY-MM-DD]</span>
+                            <p>课题组近期活动通知或成果展示等。</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 联系我们 -->
+        <section id="contact" class="py-20">
+            <div class="container mx-auto px-6 text-center">
+                 <div class="text-center mb-12">
+                    <h2 class="section-title">联系我们</h2>
+                </div>
+                <p class="text-lg">我们欢迎对我们研究方向感兴趣的同学联系我们，申请实习或研究生。</p>
+                <p class="mt-4"><strong>邮箱:</strong> professor.tu@example.edu</p>
+                <p><strong>地址:</strong> [你的学校] [你的学院] [你的地址]</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2024 Tu课题组. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // 移动端菜单切换
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // 点击移动端菜单链接后关闭菜单
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
