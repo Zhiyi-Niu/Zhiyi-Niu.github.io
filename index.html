@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><!DOCTYPE html>
 <html lang="zh-CN" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
@@ -26,6 +30,10 @@
         .publication-item {
             @apply mb-6 pl-4 border-l-4 border-gray-200;
         }
+        /* 确保跳转到锚点时，内容不被顶部导航栏遮挡 */
+        [id] {
+            scroll-margin-top: 80px;
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-700">
@@ -37,7 +45,22 @@
             <div class="hidden md:flex items-center space-x-8">
                 <a href="#home" class="nav-link font-semibold">首页</a>
                 <a href="#research" class="nav-link font-semibold">科研方向</a>
-                <a href="#publications" class="nav-link font-semibold">发表论文</a>
+                <!-- 科研成果下拉菜单 -->
+                <div class="relative group">
+                    <button class="nav-link font-semibold flex items-center">
+                        科研成果
+                        <svg class="w-4 h-4 ml-1 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <!-- 修改后的下拉菜单结构 -->
+                    <div class="absolute left-0 top-full hidden group-hover:block pt-2 w-40 z-50">
+                        <div class="bg-white shadow-lg rounded-md py-2 border border-gray-100">
+                            <a href="#papers" class="block px-4 py-2 text-gray-800 hover:bg-blue-50 transition duration-150">论文成果</a>
+                            <a href="#patents" class="block px-4 py-2 text-gray-800 hover:bg-blue-50 transition duration-150">专利成果</a>
+                            <a href="#awards" class="block px-4 py-2 text-gray-800 hover:bg-blue-50 transition duration-150">获奖情况</a>
+                            <a href="#projects" class="block px-4 py-2 text-gray-800 hover:bg-blue-50 transition duration-150">科研项目</a>
+                        </div>
+                    </div>
+                </div>
                 <a href="#members" class="nav-link font-semibold">课题组成员</a>
                 <a href="#news" class="nav-link font-semibold">科研动态</a>
                 <a href="#contact" class="nav-link font-semibold">联系我们</a>
@@ -51,7 +74,11 @@
         <div id="mobile-menu" class="md:hidden hidden px-6 pb-4 space-y-2 bg-sky-50/90">
             <a href="#home" class="block nav-link">首页</a>
             <a href="#research" class="block nav-link">科研方向</a>
-            <a href="#publications" class="block nav-link">发表论文</a>
+            <p class="font-semibold text-gray-800 pt-2">科研成果</p>
+            <a href="#papers" class="block nav-link pl-4">论文成果</a>
+            <a href="#patents" class="block nav-link pl-4">专利成果</a>
+            <a href="#awards" class="block nav-link pl-4">获奖情况</a>
+            <a href="#projects" class="block nav-link pl-4">科研项目</a>
             <a href="#members" class="block nav-link">课题组成员</a>
             <a href="#news" class="block nav-link">新闻动态</a>
             <a href="#contact" class="block nav-link">联系我们</a>
@@ -80,7 +107,7 @@
                     <div class="slider-item duration-700 ease-in-out hidden">
                         <img src="images/group_photo_2.jpg" class="w-full object-cover" alt="Slider Image 2">
                     </div>
-                
+
                     <!-- 切换按钮 -->
                     <button id="prev-button" class="slider-button left-4">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
@@ -92,7 +119,7 @@
             </div>
         </section>
 
-        
+
         <!-- 科研方向 -->
         <section id="research" class="py-20">
             <div class="container mx-auto px-6">
@@ -100,7 +127,7 @@
                     <h2 class="section-title">科研方向</h2>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto">
-                    
+
                     <!-- 科研方向1 -->
                     <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
                         <img src="images/bg1.jpg" alt="科研方向一的图片" class="w-full h-56 object-cover">
@@ -109,7 +136,7 @@
                             <p class="text-base">远程光体积描记法（rPPG）是一种非接触式生理信号监测技术，通过普通 RGB 相机捕捉面部皮肤因血容量波动产生的细微颜色变化，结合信号处理与深度学习提取心率、血氧等关键生理指标。无需穿戴设备，避免侵入性操作与使用不适，广泛适用于远程医疗、居家健康监测、驾驶员状态预警等场景。核心研究聚焦于提升运动干扰、光照变化下的信号鲁棒性，推动技术在真实复杂场景的落地应用。</p>
                         </div>
                     </div>
-                    
+
                     <!-- 科研方向2 -->
                     <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
                         <img src="images/bg2.jpg" alt="科研方向二的图片" class="w-full h-56 object-cover">
@@ -118,114 +145,151 @@
                             <p class="text-base">目标检测是计算机视觉核心技术，可从图像 / 视频中自动定位（框选）目标位置并识别类别，实现 “哪里有什么” 的自动化感知。技术历经从手工特征（HOG、Haar）到深度学习主导的演进，现主流方案如 YOLO（实时性优）、Faster R-CNN（高精度）等，广泛应用于自动驾驶避障、安防监控、医疗病灶检测等场景。核心研究聚焦小目标识别、复杂背景鲁棒性、低算力设备适配，推动技术在真实场景落地。</p>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </section>
 
-        <!-- 发表论文 -->
-        <section id="publications" class="py-20 bg-white">
+        <!-- 科研成果 -->
+        <section id="achievements" class="py-20 bg-white">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
-                    <h2 class="section-title">发表论文</h2>
+                    <h2 class="section-title">科研成果</h2>
                 </div>
-                <!-- 2025年 -->
-                <h3 class="text-2xl font-semibold mb-6 text-gray-800">2025</h3>
-                <ul>
-                    <li class="publication-item">
-                        <p class="font-bold text-lg">Phys-EdiGAN: A privacy-preserving method for editing physiological signals 
-in facial videos</p>
-                        <p class="text-sm text-gray-600">Xiaoguang Tu*, Zhiyi Niu, Juhang Yin, Yanyan Zhang, Ming Yang, Lin Wei, Yu Wang, Zhaoxin Fanc, Jian Zhao</p>
-                        <p class="italic">Pattern Recognition, 2025</p>
-                        <div class="mt-2 space-x-4">
-                            <a href="papers/Phys-EdiGAN.pdf" class="text-blue-600 hover:underline">[PDF]</a>
-                            <a href="https://www.sciencedirect.com/science/article/abs/pii/S0031320325006260" class="text-blue-600 hover:underline">[原文链接]</a>
-                        </div>
-                    </li>
-                    <li class="publication-item">
-                        <p class="font-bold text-lg">AnomNet: ADual-Stage Centroid Optimization Framework for Unsupervised Anomaly Detection</p>
-                        <p class="text-sm text-gray-600">Yuan Gao, Yu Wang, Xiaoguang Tu*, Jiaqing Shen</p>
-                        <p class="italic">Journal of Imaging, 2025</p>
-                        <div class="mt-2 space-x-4">
-                            <a href="papers/AnomNet.pdf" class="text-blue-600 hover:underline">[PDF]</a>
-                            <a href="https://www.mdpi.com/2313-433X/11/9/301" class="text-blue-600 hover:underline">[原文链接]</a>
-                        </div>
-                    </li>
-                    <li class="publication-item">
-                        <p class="font-bold text-lg">Contrastive Learning-Driven Image Dehazing with Multi-Scale Feature Fusion and Hybrid Attention Mechanism</p>
-                        <p class="text-sm text-gray-600"> Huazhong Zhang, Jiaozhuo Wang, Xiaoguang Tu*, Zhiyi Niu, Yu Wang</p>
-                        <p class="italic">Journal of Imaging, 2025</p>
-                        <div class="mt-2 space-x-4">
-                            <a href="papers/Contrastive Learning-Driven Image Dehazing with Multi-Scale.pdf" class="text-blue-600 hover:underline">[PDF]</a>
-                            <a href="https://www.mdpi.com/2313-433X/11/9/290" class="text-blue-600 hover:underline">[原文链接]</a>
-                        </div>
-                    </li>
-                </ul>
-                <!-- 2024年 -->
-                <h3 class="text-2xl font-semibold mt-16 mb-6 text-gray-800">2024</h3>
-                <ul>
-                    <li class="publication-item">
-                        <p class="font-bold text-lg">Low-light images enhancement via a dense transformer network</p>
-                        <p class="text-sm text-gray-600">Yi Huang, Gui Fu, Wanchun Ren∗, Xiaoguang Tu∗∗, Ziliang Feng, Bokai Liu, Jianhua Liu, Chao Zhou, Yuang Liu, Xiaoqing Zhang</p>
-                        <p class="italic">Digital Signal Processing, 2024</p>
-                        <div class="mt-2 space-x-4">
-                            <a href="papers/Low-light images enhancement via a dense transformer network.pdf" class="text-blue-600 hover:underline">[PDF]</a>
-                            <a href="https://www.sciencedirect.com/science/article/abs/pii/S1051200424000927" class="text-blue-600 hover:underline">[原文链接]</a>
-                        </div>
-                    </li>
-                    <li class="publication-item">
-                        <p class="font-bold text-lg">Learn Discriminative Features for Small Object Detection through Multi-scale Image Degradation with Contrastive Learning</p>
-                        <p class="text-sm text-gray-600"> Xiaoguang Tu*, Zhi He, Gui Fu*, Jianhua Liu, Mian Zhong, Chao Zhou, Xia Lei, Juhang Yin, Yi Huang, Yu Wang</p>
-                        <p class="italic">IEICE Transactions on Information and Systems, 2024</p>
-                        <div class="mt-2 space-x-4">
-                            <a href="papers/Learn Discriminative Features for Small Object Detection through.pdf" class="text-blue-600 hover:underline">[PDF]</a>
-                            <a href="https://www.jstage.jst.go.jp/article/transinf/advpub/0/advpub_2024EDP7204/_article/-char/ja/" class="text-blue-600 hover:underline">[原文链接]</a>
-                        </div>
-                    </li>
-                    <li class="publication-item">
-                        <p class="font-bold text-lg">Standardized rPPG signal generation based on generative adversarial networks</p>
-                        <p class="text-sm text-gray-600">Xiaoguang Tu, Yuang Liu*, Mengjie Zhao*, Bokai Liu, Jianhua Liu, Xia Lei, Luopeng Xu, Xinyu Zhu, Yu Wang, Yi Huang</p>
-                        <p class="italic">Journal of Electronic Imaging, 2024</p>
-                        <div class="mt-2 space-x-4">
-                            <a href="papers/Standardized rPPG signal generation based on generative adversarial networks.pdf" class="text-blue-600 hover:underline">[PDF]</a>
-                            <a href="https://www.spiedigitallibrary.org/journals/journal-of-electronic-imaging/volume-33/issue-1/013032/Standardized-rPPG-signal-generation-based-on-generative-adversarial-networks/10.1117/1.JEI.33.1.013032.short" class="text-blue-600 hover:underline">[原文链接]</a>
-                        </div>
-                    </li>
-                </ul>
-                <!-- 2023年 -->
-                <h3 class="text-2xl font-semibold mt-16 mb-6 text-gray-800">2023</h3>
-                <ul>
-                    <li class="publication-item">
-                        <p class="font-bold text-lg">An improved YOLOv5 for object detection in visible and thermal infrared images based on contrastive learning</p>
-                        <p class="text-sm text-gray-600">Xiaoguang Tu*, Zihao Yuan, Bokai Liu, Jianhua Liu, Yan Hu, Houqiang Hua, Lin Wei</p>
-                        <p class="italic">Frontiers in Physics, 2023</p>
-                        <div class="mt-2 space-x-4">
-                            <a href="papers/An improved YOLOv5 for object detection in visible and thermal infrared images based on contrastive learning.pdf" class="text-blue-600 hover:underline">[PDF]</a>
-                            <a href="https://www.frontiersin.org/journals/physics/articles/10.3389/fphy.2023.1193245/full" class="text-blue-600 hover:underline">[原文链接]</a>
-                        </div>
-                    </li>
+                
+                <!-- 论文成果 -->
+                <div id="papers">
+                    <h3 class="text-2xl font-semibold mb-6 text-gray-800 border-l-4 border-blue-500 pl-4">论文成果</h3>
+                    <!-- 2025年 -->
+                    <h4 class="text-xl font-semibold mb-6 text-gray-700 mt-8">2025</h4>
+                    <ul>
+                        <li class="publication-item">
+                            <p class="font-bold text-lg">Phys-EdiGAN: A privacy-preserving method for editing physiological signals in facial videos</p>
+                            <p class="text-sm text-gray-600">Xiaoguang Tu*, Zhiyi Niu, Juhang Yin, Yanyan Zhang, Ming Yang, Lin Wei, Yu Wang, Zhaoxin Fanc, Jian Zhao</p>
+                            <p class="italic">Pattern Recognition, 2025</p>
+                            <div class="mt-2 space-x-4">
+                                <a href="papers/Phys-EdiGAN.pdf" class="text-blue-600 hover:underline">[PDF]</a>
+                                <a href="https://www.sciencedirect.com/science/article/abs/pii/S0031320325006260" class="text-blue-600 hover:underline">[原文链接]</a>
+                            </div>
+                        </li>
+                        <li class="publication-item">
+                            <p class="font-bold text-lg">AnomNet: ADual-Stage Centroid Optimization Framework for Unsupervised Anomaly Detection</p>
+                            <p class="text-sm text-gray-600">Yuan Gao, Yu Wang, Xiaoguang Tu*, Jiaqing Shen</p>
+                            <p class="italic">Journal of Imaging, 2025</p>
+                            <div class="mt-2 space-x-4">
+                                <a href="papers/AnomNet.pdf" class="text-blue-600 hover:underline">[PDF]</a>
+                                <a href="https://www.mdpi.com/2313-433X/11/9/301" class="text-blue-600 hover:underline">[原文链接]</a>
+                            </div>
+                        </li>
+                        <li class="publication-item">
+                            <p class="font-bold text-lg">Contrastive Learning-Driven Image Dehazing with Multi-Scale Feature Fusion and Hybrid Attention Mechanism</p>
+                            <p class="text-sm text-gray-600"> Huazhong Zhang, Jiaozhuo Wang, Xiaoguang Tu*, Zhiyi Niu, Yu Wang</p>
+                            <p class="italic">Journal of Imaging, 2025</p>
+                            <div class="mt-2 space-x-4">
+                                <a href="papers/Contrastive Learning-Driven Image Dehazing with Multi-Scale.pdf" class="text-blue-600 hover:underline">[PDF]</a>
+                                <a href="https://www.mdpi.com/2313-433X/11/9/290" class="text-blue-600 hover:underline">[原文链接]</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <!-- 2024年 -->
+                    <h4 class="text-xl font-semibold mt-16 mb-6 text-gray-700">2024</h4>
+                    <ul>
+                        <li class="publication-item">
+                            <p class="font-bold text-lg">Low-light images enhancement via a dense transformer network</p>
+                            <p class="text-sm text-gray-600">Yi Huang, Gui Fu, Wanchun Ren∗, Xiaoguang Tu∗∗, Ziliang Feng, Bokai Liu, Jianhua Liu, Chao Zhou, Yuang Liu, Xiaoqing Zhang</p>
+                            <p class="italic">Digital Signal Processing, 2024</p>
+                            <div class="mt-2 space-x-4">
+                                <a href="papers/Low-light images enhancement via a dense transformer network.pdf" class="text-blue-600 hover:underline">[PDF]</a>
+                                <a href="https://www.sciencedirect.com/science/article/abs/pii/S1051200424000927" class="text-blue-600 hover:underline">[原文链接]</a>
+                            </div>
+                        </li>
+                        <li class="publication-item">
+                            <p class="font-bold text-lg">Learn Discriminative Features for Small Object Detection through Multi-scale Image Degradation with Contrastive Learning</p>
+                            <p class="text-sm text-gray-600"> Xiaoguang Tu*, Zhi He, Gui Fu*, Jianhua Liu, Mian Zhong, Chao Zhou, Xia Lei, Juhang Yin, Yi Huang, Yu Wang</p>
+                            <p class="italic">IEICE Transactions on Information and Systems, 2024</p>
+                            <div class="mt-2 space-x-4">
+                                <a href="papers/Learn Discriminative Features for Small Object Detection through.pdf" class="text-blue-600 hover:underline">[PDF]</a>
+                                <a href="https://www.jstage.jst.go.jp/article/transinf/advpub/0/advpub_2024EDP7204/_article/-char/ja/" class="text-blue-600 hover:underline">[原文链接]</a>
+                            </div>
+                        </li>
+                        <li class="publication-item">
+                            <p class="font-bold text-lg">Standardized rPPG signal generation based on generative adversarial networks</p>
+                            <p class="text-sm text-gray-600">Xiaoguang Tu, Yuang Liu*, Mengjie Zhao*, Bokai Liu, Jianhua Liu, Xia Lei, Luopeng Xu, Xinyu Zhu, Yu Wang, Yi Huang</p>
+                            <p class="italic">Journal of Electronic Imaging, 2024</p>
+                            <div class="mt-2 space-x-4">
+                                <a href="papers/Standardized rPPG signal generation based on generative adversarial networks.pdf" class="text-blue-600 hover:underline">[PDF]</a>
+                                <a href="https://www.spiedigitallibrary.org/journals/journal-of-electronic-imaging/volume-33/issue-1/013032/Standardized-rPPG-signal-generation-based-on-generative-adversarial-networks/10.1117/1.JEI.33.1.013032.short" class="text-blue-600 hover:underline">[原文链接]</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <!-- 2023年 -->
+                    <h4 class="text-xl font-semibold mt-16 mb-6 text-gray-700">2023</h4>
+                    <ul>
+                        <li class="publication-item">
+                            <p class="font-bold text-lg">An improved YOLOv5 for object detection in visible and thermal infrared images based on contrastive learning</p>
+                            <p class="text-sm text-gray-600">Xiaoguang Tu*, Zihao Yuan, Bokai Liu, Jianhua Liu, Yan Hu, Houqiang Hua, Lin Wei</p>
+                            <p class="italic">Frontiers in Physics, 2023</p>
+                            <div class="mt-2 space-x-4">
+                                <a href="papers/An improved YOLOv5 for object detection in visible and thermal infrared images based on contrastive learning.pdf" class="text-blue-600 hover:underline">[PDF]</a>
+                                <a href="https://www.frontiersin.org/journals/physics/articles/10.3389/fphy.2023.1193245/full" class="text-blue-600 hover:underline">[原文链接]</a>
+                            </div>
+                        </li>
+                        <li class="publication-item">
+                            <p class="font-bold text-lg">Low-light image enhancement by two-stream contrastive learning in both spatial and frequency domains</p>
+                            <p class="text-sm text-gray-600">Yi Huang, Xiaoguang Tu*, Gui Fu, Wanchun Ren*, Bokai Liu, Ming Yang, Jianhua Liu, Xiaoqiang Zhang</p>
+                            <p class="italic">Journal of Electronic Imaging, 2023</p>
+                            <div class="mt-2 space-x-4">
+                                <a href="papers/Low-light image enhancement by two-stream contrastive learning in both spatial and frequency domains.pdf" class="text-blue-600 hover:underline">[PDF]</a>
+                                <a href="https://www.spiedigitallibrary.org/journals/journal-of-electronic-imaging/volume-32/issue-4/043024/Low-light-image-enhancement-by-two-stream-contrastive-learning-in/10.1117/1.JEI.32.4.043024.short" class="text-blue-600 hover:underline">[原文链接]</a>
+                            </div>
+                        </li>
+                        <li class="publication-item">
+                            <p class="font-bold text-lg">Low-Light Image Enhancement by Learning Contrastive Representations in Spatial and Frequency Domains</p>
+                            <p class="text-sm text-gray-600">Yi Huang, Xiaoguang Tu*, Gui Fu, Tingting Liu, Bokai Liu, Ming Yang, Ziliang Feng</p>
+                            <p class="italic">IEEE International Conference on Multimedia and Expo (ICME), 2023</p>
+                            <div class="mt-2 space-x-4">
+                                <a href="papers/Low-Light Image Enhancement by Learning Contrastive Representations in Spatial and Frequency Domains.pdf" class="text-blue-600 hover:underline">[PDF]</a>
+                                <a href="https://ieeexplore.ieee.org/abstract/document/10219916" class="text-blue-600 hover:underline">[原文链接]</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
 
-                    <li class="publication-item">
-                        <p class="font-bold text-lg">Low-light image enhancement by two-stream contrastive learning in both spatial and frequency domains</p>
-                        <p class="text-sm text-gray-600">Yi Huang, Xiaoguang Tu*, Gui Fu, Wanchun Ren*, Bokai Liu, Ming Yang, Jianhua Liu, Xiaoqiang Zhang</p>
-                        <p class="italic">Journal of Electronic Imaging, 2023</p>
-                        <div class="mt-2 space-x-4">
-                            <a href="papers/Low-light image enhancement by two-stream contrastive learning in both spatial and frequency domains.pdf" class="text-blue-600 hover:underline">[PDF]</a>
-                            <a href="https://www.spiedigitallibrary.org/journals/journal-of-electronic-imaging/volume-32/issue-4/043024/Low-light-image-enhancement-by-two-stream-contrastive-learning-in/10.1117/1.JEI.32.4.043024.short" class="text-blue-600 hover:underline">[原文链接]</a>
-                        </div>
-                    </li>
+                <!-- 专利成果 -->
+                <div id="patents" class="mt-20">
+                    <h3 class="text-2xl font-semibold mb-6 text-gray-800 border-l-4 border-blue-500 pl-4">专利成果</h3>
+                    <p class="text-lg-600">1. 涂晓光;李卓骏;高增;刘建华;杨明;张艳艳;魏麟; 一种基于多通道域泛化网络的无人机小目标检测方法, 2025-07-22, ZL202510286090.3.</p>
+                    <p class="text-lg-600">2. 涂晓光;牛知艺;艾瑞;刘建华;杨明;张艳艳;魏麟;王宇; 一种基于信号融合的飞行员非接触生理状态评估方法, 2025-07-22, ZL202510503111.2.</p>
+                    <p class="text-lg-600">3. 涂晓光;何志;康朋新;李卓骏;张艳艳;杨明;刘建华;殷举航;王宇;周超;崔雨勇; 一种基于无监督对抗学习的无人机小目标检测方法, 2025-07-22, ZL202411265268.8.</p>
+                    <p class="text-lg-600">4. 涂晓光;牛知艺;赵梦洁;张艳艳;刘建华;杨明;殷举航;朱新宇;王宇; 一种重置rPPG信号的视频人脸生理信息隐私保护方法, 2024-10-11, ZL202410948283.6.</p>
+                    <p class="text-lg-600">5. 涂晓光;黄一;付贵;杨明;许罗鹏;李首庆;许将军; 基于对比学习的图像去光照模型及其训练方法, 2023-06-23, ZL202310182294.3.</p>
+                    <p class="text-lg-600">6. 涂晓光;胡哲昊;刘建华;刘勃锴;雷霞;王文敬;王宇; 基于生成对抗网络的rPPG信号生成方法及装置, 2023-05-12, ZL202310220943.4.</p>
+                </div>
 
-                    <li class="publication-item">
-                        <p class="font-bold text-lg">Low-Light Image Enhancement by Learning Contrastive Representations in Spatial and Frequency Domains</p>
-                        <p class="text-sm text-gray-600">Yi Huang, Xiaoguang Tu*, Gui Fu, Tingting Liu, Bokai Liu, Ming Yang, Ziliang Feng</p>
-                        <p class="italic">IEEE International Conference on Multimedia and Expo (ICME), 2023</p>
-                        <div class="mt-2 space-x-4">
-                            <a href="papers/Low-Light Image Enhancement by Learning Contrastive Representations in Spatial and Frequency Domains.pdf" class="text-blue-600 hover:underline">[PDF]</a>
-                            <a href="https://ieeexplore.ieee.org/abstract/document/10219916" class="text-blue-600 hover:underline">[原文链接]</a>
-                        </div>
-                    </li>
-                    
-                </ul>
+                <!-- 获奖情况 -->
+                <div id="awards" class="mt-20">
+                    <h3 class="text-2xl font-semibold mb-6 text-gray-800 border-l-4 border-blue-500 pl-4">获奖情况</h3>
+                    <p class="pl-4 text-gray-600">内容正在整理中，敬请期待...</p>
+                </div>
+
+                <!-- 科研项目 -->
+                <div id="projects" class="mt-20">
+                    <h3 class="text-2xl font-semibold mb-6 text-gray-800 border-l-4 border-blue-500 pl-4">科研项目</h3>
+                    <p class="text-lg-600">(1) 开放性视觉场景中基于转导推理式元学习的无监督领域自适应研究，国家自然科学基金青年基金，62406207，2025/01-2027/12，30万元。</p>
+                    <p class="text-lg-600">(2) 基于多源数据融合的民航飞行员心理状态评估，中国博士后科学基金面上基金，2022M722248，2023/01-2025/06，8万元。</p>
+                    <p class="text-lg-600">(3) 面向飞行员非接触连续生理状态感知的多源信息挖掘及融合研究，四川省自然科学基金青年基金，2025ZNSFSC1502，2025/01 - 2026/12，10万元。</p>
+                    <p class="text-lg-600">(4) 基于rPPG生理信号监测的民航人因安全研究及应用，四川省科技创新创业苗子工程重点项目，2022JDRC0076，2022/01-2023/12，10万元。</p>
+                    <p class="text-lg-600">(5) 低空飞行目标识别与跟踪技术研究，民航飞行技术与飞行安全重点实验室开放基金，FZ2022KF06，2023/01-2024/12，10万元。</p>
+                    <p class="text-lg-600">(6) 非接触面部多源信息融合的心率变异性研究，警务智能四川省重点实验室项目，ZNJW2024KFQN003，2024.01-2025.12，10万元。</p>
+                    <p class="text-lg-600">(7) 民航安检旅客情绪状态智能感知及潜在风险分析研究，中国民用航空飞行学院智慧民航专项，ZHMH2022-004，2022/06-2024/05，12万元。</p>
+                    <p class="text-lg-600">(8) 面向封闭机库环境下的通航飞机结构异常检测方法研究，校级面上项目，25CAFUC03023，5万元， 2025.01-2026.12</p>
+                    <p class="text-lg-600">(9) 基于卷积神经网络的Cessna172R飞机结构检修异常检测方法研究，省级实验室项目，GAMRC2023YB06，5万元，2024.01-2025.12.</p>
+                    <p class="text-lg-600">(10) 基于驾驶舱监控视频的转场飞行任务智能评估研究，校级面上项目，J2023-026，5万元，2023.01-2024.12.</p>
+                    <p class="text-lg-600">(11)	基于rPPG生理信号监测的民航飞行员心理健康评估研究，校级面上项目，J2022-025，5万元，2022.01-2023.12.</p>
+                    <p class="text-lg-600">(12) 基于VR的大飞机科普教育仿真内容开发，四川省科普项目，2022JDKP0093，10万元，2022/01-2023/12.</p>
+                    <p class="text-lg-600">(13) 机器学习辅助的可见光红外多频谱隐身材料智能化设计与光谱特性研究，电子科技大学电子薄膜与集成器件全国重点实验室开放课题，KFJJ202403, 2025.01-2026.11.</p>
+                </div>
+
             </div>
         </section>
 
@@ -256,7 +320,7 @@ in facial videos</p>
                         <h5 class="font-bold">黄一</h5>
                         <p class="text-sm text-gray-500">2024级博士生</p>
                     </div>
-                    
+
                     <!-- 2023级学生 -->
                      <!-- 邓虎 -->
                     <div class="text-center">
@@ -294,7 +358,7 @@ in facial videos</p>
                         <h5 class="font-bold">陈鹏</h5>
                         <p class="text-sm text-gray-500">2023级硕士生</p>
                     </div>
-                    
+
                     <!-- 2024级学生 -->
                     <!-- 高增 -->
                     <div class="text-center">
@@ -343,7 +407,7 @@ in facial videos</p>
                     <!-- 更多学生... -->
                 </div>
 
-                
+
                 <!-- 已毕业成员 -->
                 <h3 class="text-2xl font-semibold mb-8 text-gray-800">已毕业学生</h3>
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
@@ -355,7 +419,7 @@ in facial videos</p>
                         <p class="text-sm text-gray-500">2020级硕士生</p>
                         <p class="text-sm text-gray-500">现就职于[浙江大学金华研究院]</p>
                     </div>
-                    
+
                     <!-- 2021级学生 -->
                     <!-- 原子昊 -->
                     <div class="text-center">
@@ -371,7 +435,7 @@ in facial videos</p>
                         <p class="text-sm text-gray-500">2021级硕士生</p>
                         <p class="text-sm text-gray-500">现就职于[中国民用航空第二研究所]</p>
                     </div>
-                    
+
                     <!-- 2022级学生 -->
                     <!-- 刘宇昂 -->
                     <div class="text-center">
@@ -423,7 +487,7 @@ in facial videos</p>
                  <div class="text-center mb-12">
                     <h2 class="section-title">联系我们</h2>
                 </div>
-                <p class="text-lg">欢迎对我们研究方向感兴趣的同学联系我们</p>
+                <p class="text-lg">欢迎对我们研究方向感兴趣的小伙伴加入我们!</p>
                 <p class="mt-4"><strong>邮箱:</strong>xguangtu@outlook.com</p>
                 <p><strong>地址:</strong> 四川省成都市简阳市福田街道中国民用航空飞行学院(天府校区)</p>
             </div>
@@ -444,7 +508,7 @@ in facial videos</p>
         mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
-        
+
         // 点击移动端菜单链接后关闭菜单
         const mobileLinks = mobileMenu.querySelectorAll('a');
         mobileLinks.forEach(link => {
@@ -454,7 +518,7 @@ in facial videos</p>
         });
 
         // ==========================================================================
-        // 补充：图片滑动切换逻辑（新增代码，复制粘贴到这里）
+        // 图片滑动切换逻辑
         // ==========================================================================
         document.addEventListener('DOMContentLoaded', () => {
             // 1. 获取图片滑动相关元素
@@ -462,7 +526,7 @@ in facial videos</p>
             const prevButton = document.getElementById('prev-button');   // 左箭头按钮
             const nextButton = document.getElementById('next-button');   // 右箭头按钮
             let currentIndex = 0; // 当前显示的图片索引（初始为第1张，索引0）
-        
+
             // 2. 定义“显示指定索引图片”的函数
             function showSlide(index) {
                 // 隐藏所有图片
@@ -472,45 +536,35 @@ in facial videos</p>
                 // 显示当前索引的图片（移除hidden类）
                 sliderItems[index].classList.remove('hidden');
             }
-        
+
             // 3. 左箭头点击事件：切换到上一张（边界处理：第1张点击后跳到最后1张）
             prevButton.addEventListener('click', () => {
                 currentIndex = (currentIndex - 1 + sliderItems.length) % sliderItems.length;
                 showSlide(currentIndex);
             });
-        
+
             // 4. 右箭头点击事件：切换到下一张（边界处理：最后1张点击后跳到第1张）
             nextButton.addEventListener('click', () => {
                 currentIndex = (currentIndex + 1) % sliderItems.length;
                 showSlide(currentIndex);
             });
-        
+
             // 5. 初始化：默认显示第1张图片（可选，确保页面加载时正确显示）
-            showSlide(currentIndex);
-        
+            if(sliderItems.length > 0) {
+              showSlide(currentIndex);
+            }
+
             // （可选）添加按钮样式：鼠标悬浮时显示白色背景，提升交互感
             const sliderButtons = document.querySelectorAll('.slider-button');
             sliderButtons.forEach(btn => {
                 btn.classList.add('absolute', 'top-1/2', '-translate-y-1/2', 'bg-white/80', 'text-gray-800', 'p-2', 'rounded-full', 'shadow-md', 'hover:bg-white', 'cursor-pointer', 'z-10');
             });
-            });
+        });
     </script>
 </body>
+</html></title>
+</head>
+<body>
+
+</body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
